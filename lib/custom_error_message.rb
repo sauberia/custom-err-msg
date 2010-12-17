@@ -35,8 +35,8 @@ module CustomErrorMessage
     end
 
     def starts_with_humanized_column_followed_by_circumflex?(message)
-      @errors.keys.any? do |column| 
-        humanized = @base.class.human_attribute_name column.split('.').last.to_s
+      keys.any? do |column|
+        humanized = @base.class.human_attribute_name column.to_s.split('.').last.to_s
         message.match(/^#{humanized} \^/)
       end
     end
